@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), '../lib/gilded_rose')
 
 describe GildedRose do
   before do
-    @items = [Item.new("foo", 0, 0), Item.new("foo", 1, 1), Item.new("foo", -1, 4) ]
+    @items = [Item.new("foo", 0, 0), Item.new("foo", 1, 1), Item.new("foo", -1, 4), Item.new("Aged Brie", 3, 3) ]
     GildedRose.new(@items).update_quality()
   end
   describe "#update_quality" do
@@ -22,9 +22,10 @@ describe GildedRose do
       expect(@items[2].quality).to eq(2)
     end
     it "quality of an item is never negative" do
+      expect(@items[0].quality).to eq(0)
     end
     it "aged brie increase quality as sell in decreases" do
-
+      expect(@items[3].quality).to eq(4)
     end
   end
 
