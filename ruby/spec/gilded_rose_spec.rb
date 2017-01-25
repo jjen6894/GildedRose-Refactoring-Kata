@@ -35,5 +35,9 @@ describe GildedRose do
     it "never exceeds a quality value greater than 50" do
       expect(@items[4].quality).to eq(50)
     end
+
+    it "sulfuras being a legendary never decreases in quality" do
+      
+    end
   end
 end
