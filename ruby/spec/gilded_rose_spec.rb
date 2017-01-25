@@ -22,7 +22,8 @@ describe GildedRose do
       expect(@items[2].quality).to eq(2)
     end
   end
-
+  it "aged brie increase quality as sell in decreases" do
+  end
 
 
 
