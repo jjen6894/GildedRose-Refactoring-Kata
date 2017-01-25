@@ -1,4 +1,3 @@
-#responsible
 class GildedRose
 
   def initialize(items)
@@ -14,8 +13,7 @@ class GildedRose
           end
         end
       else
-        if item.quality < 50
-          item.quality = item.quality + 1
+        item_quality_increment(item)
           if item.name == "Backstage passes to a TAFKAL80ETC concert"
             if item.sell_in < 11
               if item.quality < 50
@@ -23,12 +21,9 @@ class GildedRose
               end
             end
             if item.sell_in < 6
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
+              item_quality_increment(item)
             end
           end
-        end
       end
       if item.name != "Sulfuras, Hand of Ragnaros"
         item.sell_in = item.sell_in - 1
@@ -45,14 +40,17 @@ class GildedRose
             item.quality = item.quality - item.quality
           end
         else
-          if item.quality < 50
-            item.quality = item.quality + 1
-          end
+          item_quality_increment(item)
         end
       end
     end
   end
 end
+
+def item_quality_increment(item)
+  item.quality +=1 if item.quality < 50
+end
+
 #move into it's own file
 class Item
   attr_accessor :name, :sell_in, :quality
