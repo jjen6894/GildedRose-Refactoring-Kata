@@ -29,6 +29,7 @@ class GildedRose
         item.sell_in = item.sell_in - 1
       end
       if item.sell_in < 0
+        backstage_pass_no_longer_sellable(item)
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             if item.quality > 0
@@ -36,8 +37,6 @@ class GildedRose
                 item.quality = item.quality - 1
               end
             end
-          else
-            item.quality = item.quality - item.quality
           end
         else
           item_quality_increment(item)
@@ -45,6 +44,10 @@ class GildedRose
       end
     end
   end
+end
+
+def backstage_pass_no_longer_sellable(item)
+  item.quality = 0 if item.name == "Backstage passes to a TAFKAL80ETC concert" 
 end
 
 def item_quality_increment(item)
