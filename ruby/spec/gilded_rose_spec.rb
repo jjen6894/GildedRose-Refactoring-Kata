@@ -21,8 +21,11 @@ describe GildedRose do
     it "item once passed sell by date, quality degrades twice as fast" do
       expect(@items[2].quality).to eq(2)
     end
-  end
-  it "aged brie increase quality as sell in decreases" do
+    it "quality of an item is never negative" do
+    end
+    it "aged brie increase quality as sell in decreases" do
+
+    end
   end
 
 
