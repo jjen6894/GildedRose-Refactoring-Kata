@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), '../lib/gilded_rose')
 describe GildedRose do
   before do
     @items = [Item.new("foo", 0, 0), Item.new("foo", 1, 1), Item.new("foo", -1, 4), Item.new("Aged Brie", 3, 3),
-    Item.new("Aged Brie", 5, 50), Item.new("Sulfuras, Hand of Ragnaros", 1, 10)]
+    Item.new("Aged Brie", 5, 50), Item.new("Sulfuras, Hand of Ragnaros", 1, 10), Item.new("Backstage passes to a TAFKAL80ETC concert", 12, 5)]
     GildedRose.new(@items).update_quality()
   end
   describe "#update_quality" do
@@ -44,5 +44,11 @@ describe GildedRose do
     it "sulfuras being a legendary never decreases in quality" do
       expect(@items[5].sell_in).to eq(1)
     end
+
+    it "Backstage Passes quality increases by 1 if sell_in value is greater than 10" do
+      expect(@items[6].quality).to eq(6)
+    end
+
+
   end
 end
