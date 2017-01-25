@@ -1,3 +1,4 @@
+#responsible
 class GildedRose
 
   def initialize(items)
@@ -52,7 +53,7 @@ class GildedRose
     end
   end
 end
-
+#move into it's own file
 class Item
   attr_accessor :name, :sell_in, :quality
 
