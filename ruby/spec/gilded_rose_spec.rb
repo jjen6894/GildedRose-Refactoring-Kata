@@ -5,7 +5,7 @@ describe GildedRose do
   before do
     @items = [Item.new("foo", 0, 0), Item.new("foo", 1, 1), Item.new("foo", -1, 4), Item.new("Aged Brie", 3, 3),
     Item.new("Aged Brie", 5, 50), Item.new("Sulfuras, Hand of Ragnaros", 1, 10), Item.new("Backstage passes to a TAFKAL80ETC concert", 12, 5),
-    Item.new("Backstage passes to a TAFKAL80ETC concert", 9, 12)]
+    Item.new("Backstage passes to a TAFKAL80ETC concert", 9, 12), Item.new("Backstage passes to a TAFKAL80ETC concert", 4, 10)]
     GildedRose.new(@items).update_quality()
   end
   describe "#update_quality" do
@@ -49,8 +49,12 @@ describe GildedRose do
     it "Backstage Passes quality increases by 1 if sell_in value is greater than 10" do
       expect(@items[6].quality).to eq(6)
     end
-    it "Backstage Passes quality increase by 2 if sell_in value is less than 10 and greater than 5" do
+    it "Backstage Passes quality increase by 2 if sell_in value is less than or equal to 10 and greater than 5" do
       expect(@items[7].quality).to eq(14)
+    end
+
+    it "Backstage Passes quality increase by 3 if sell_in value is less than or equal to 5" do
+      expect(@items[8].quality).to eq(13)
     end
 
 
