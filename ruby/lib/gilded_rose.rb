@@ -32,18 +32,22 @@ class GildedRose
 
       if item.sell_in < 0
         backstage_pass_no_longer_sellable(item)
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if item.name != "Sulfuras, Hand of Ragnaros"
-              quality_decrease(item)
-            end
-          end
-        else
+        if item.name == "Aged Brie"
           item_quality_increment(item)
         end
+        if not_special_items(item)
+              quality_decrease(item)
+        end
+
+
       end
     end
   end
+end
+
+def not_special_items(item)
+  item.name != "Backstage passes to a TAFKAL80ETC concert"
+  item.name != "Sulfuras, Hand of Ragnaros"
 end
 
 def quality_decrease(item)

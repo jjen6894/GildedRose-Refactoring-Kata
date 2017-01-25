@@ -59,6 +59,7 @@ describe GildedRose do
     end
 
     it "Backstage passes quality is 0 when sell_in hits a negative" do
+      puts @items[9]
       expect(@items[9].quality).to eq(0)
     end
 
