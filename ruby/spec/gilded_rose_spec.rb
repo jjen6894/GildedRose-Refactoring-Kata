@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), '../lib/gilded_rose')
 
 describe GildedRose do
   before do
-    @items = [Item.new("foo", 0, 0), Item.new("foo", 1, 1), Item.new("foo", -1, 4), Item.new("Aged Brie", 3, 3), Item.new("Aged Brie", 5, 50) ]
+    @items = [Item.new("foo", 0, 0), Item.new("foo", 1, 1), Item.new("foo", -1, 4), Item.new("Aged Brie", 3, 3), Item.new("Aged Brie", 5, 50), Item.new("Sulfuras, Hand of Ragnaros", 1, 10) ]
     GildedRose.new(@items).update_quality()
   end
   describe "#update_quality" do
@@ -37,7 +37,8 @@ describe GildedRose do
     end
 
     it "sulfuras being a legendary never decreases in quality" do
-      
+      expect(@items[5].quality).to eq(10)
+
     end
   end
 end
